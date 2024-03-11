@@ -27,6 +27,7 @@ const App = () => {
       task.id === taskId ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
+    console.log(updatedTasks)
   };
 
   return (
