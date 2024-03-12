@@ -8,23 +8,23 @@ const CustomCheckBox = ({ checked }) => (
 
 const App = () => {
   const [tasks, setTasks] = useState([
-    { id: 1, description: 'Task 1', completed: false },
-    { id: 2, description: 'Task 2', completed: false },
-    { id: 3, description: 'Task 3', completed: false },
+    { key: 1, description: 'Task 1', completed: false },
+    { key: 2, description: 'Task 2', completed: false },
+    { key: 3, description: 'Task 3', completed: false },
   ]);
   const [newTask, setNewTask] = useState('');
 
   const handleAddTask = () => {
     if (newTask.trim() !== '') {
-      const updatedTasks = [...tasks, { id: tasks.length + 1, description: newTask, completed: false }];
+      const updatedTasks = [...tasks, { key: tasks.length + 1, description: newTask, completed: false }];
       setTasks(updatedTasks);
       setNewTask('');
     }
   };
 
-  const handleToggleTask = (taskId) => {
+  const handleToggleTask = (taskKey) => {
     const updatedTasks = tasks.map(task =>
-      task.id === taskId ? { ...task, completed: !task.completed } : task
+      task.key === taskKey ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
     console.log(updatedTasks)
@@ -38,10 +38,10 @@ const App = () => {
       </View>
       <FlatList
         data={tasks}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.key.toString()}
         renderItem={({ item }) => (
           <ListItem bottomDivider>
-            <TouchableOpacity onPress={() => handleToggleTask(item.id)}>
+            <TouchableOpacity onPress={() => handleToggleTask(item.key)}>
               <CustomCheckBox checked={item.completed} />
             </TouchableOpacity>
             <ListItem.Content>
