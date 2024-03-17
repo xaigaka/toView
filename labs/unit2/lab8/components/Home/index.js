@@ -20,7 +20,7 @@ export default function LoginScreen({ navigation }) {
 
   async function storeUser(userData) {
     try {
-      await AsyncStorage.setItem('loginData', JSON.stringify(userData));
+      await AsyncStorage.setItem(userData.username, JSON.stringify(userData));
     } catch (error) {
       console.log(error);
     }
@@ -34,31 +34,19 @@ export default function LoginScreen({ navigation }) {
   // Function to handle login
   const handleLogin = async () => {
     try {
-      const newStoredUserData = await AsyncStorage.getItem('newLoginData');
-      const newUserData = newStoredUserData ? JSON.parse(newStoredUserData) : null;
-  
-      if (newUserData && newUserData.username === username && newUserData.password === password) {
-        navigation.navigate('To Do', { nameTitle: newUserData.firstName + " " + newUserData.lastName, userTitle: newUserData.username });
-        setError('')
-        return;
-      }
-    } catch (error) {
-      console.error('Error fetching new login data:', error);
-    }
-  
-    try {
-      const storedUserData = await AsyncStorage.getItem('loginData');
+      const storedUserData = await AsyncStorage.getItem(username);
       const userData = storedUserData ? JSON.parse(storedUserData) : null;
-  
+
       if (userData && userData.username === username && userData.password === password) {
-        navigation.navigate('To Do', { nameTitle: userData.firstName + " " + userData.lastName, userTitle: userData.username });
-        setError('')
-      } else {
-        setError('Invalid username or password');
+        navigation.navigate('To Do', { nameTitle: userData.firstName + ' ' + userData.lastName, userTitle: userData.username });
+        setError('');
+        return;
       }
     } catch (error) {
       console.error('Error fetching login data:', error);
     }
+
+    setError('Invalid username or password');
   };
   
     

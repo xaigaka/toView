@@ -27,10 +27,10 @@ export default function RegisterScreen({ navigation }) {
     zipCode: '',
   });
 
-  // Function to store user data in AsyncStorage
+  // Store user data in AsyncStorage, uses the username as a unique key
   async function storeUser(userData) {
     try {
-      await AsyncStorage.setItem('newLoginData', JSON.stringify(userData));
+        await AsyncStorage.setItem(userData.username, JSON.stringify(userData));
     } catch (error) {
       console.log(error);
     }
@@ -38,10 +38,9 @@ export default function RegisterScreen({ navigation }) {
 
   // Function to handle registration
   const handleRegister = async () => {
-    // Validate all fields
+    // Validate all fields and store if valid
     const isValid = validateFields();
     if (isValid) {
-      // If all fields are valid, proceed with registration
       const userData = {
         username,
         password,
@@ -78,7 +77,7 @@ const validateFields = () => {
       newErrors.lastName = '';
     }
   
-    // Validate username (assuming it must be alphanumeric)
+    // Validate username
     if (!/^[a-zA-Z0-9]+$/.test(username)) {
       newErrors.username = 'Error: Username must only include alphanumeric characters.';
       valid = false;
@@ -86,7 +85,7 @@ const validateFields = () => {
       newErrors.username = '';
     }
   
-    // Validate phone number (assuming format is (xxx) xxx-xxxx)
+    // Validate phone number
     if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(phoneNumber)) {
       newErrors.phoneNumber = 'Error: Phone Number must be in the format (xxx) xxx-xxxx.';
       valid = false;
@@ -94,7 +93,7 @@ const validateFields = () => {
       newErrors.phoneNumber = '';
     }
   
-    // Validate password (assuming it must contain at least one uppercase, one lowercase, one number, and one non-alphanumeric character)
+    // Validate password
     if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s:])/.test(password)) {
       newErrors.password = 'Error: Password must contain at least one uppercase letter, one lowercase letter, one number, and one non-alphanumeric character.';
       valid = false;
@@ -118,7 +117,7 @@ const validateFields = () => {
       newErrors.email = '';
     }
   
-    // Validate ZIP code (assuming it must be 5 digits)
+    // Validate ZIP code
     if (!/^\d{5}$/.test(zipCode)) {
       newErrors.zipCode = 'Error: ZIP Code must be 5 digits.';
       valid = false;
