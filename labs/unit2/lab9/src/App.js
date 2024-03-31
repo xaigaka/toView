@@ -1,78 +1,70 @@
-import './App.css';
-import { useCallback, useState } from 'react';
-import DurationExercise from './components/DurationExercise';
-import RepetitionExercise from './components/RepetitionExercise';
-import RunningExercise from './components/RunningExercise';
+// App.js
+import React from 'react';
+import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DurationExercise from './components/Duration';
+import RepetitionExercise from './components/Repetition';
 
-const MENU_SCREEN = "menu";
-const EXERCISE_SCREEN = "exercise";
-const DURATION_EXERCISE = "duration";
-const REPETITION_EXERCISE = "repetition";
-const LAPS_EXERCISE = "laps"
+const Stack = createNativeStackNavigator();
 
+const HomeScreen = ({ navigation }) => {
+  const exercises = [
+    { type: 'Repetition', name: 'Push Ups' },
+    { type: 'Repetition', name: 'Squats' },
+    { type: 'Duration', name: 'Running' },
+    { type: 'Duration', name: 'Swimming' },
+  ];
 
-let exerciseList = [
-  {type: DURATION_EXERCISE, name: "Running"},
-  {type: DURATION_EXERCISE, name: "Rowing"},
-  {type: DURATION_EXERCISE, name: "Swimming"},
-  {type: REPETITION_EXERCISE, name: "Push Ups"},
-  {type: LAPS_EXERCISE, name: "Running with Laps"}
-]
-
-export default function App() {
-  let [currentScreen, setCurrentScreen] = useState(MENU_SCREEN)
-  let [currentExercise, setCurrentExercise] = useState({})
-  let screenComponent = undefined
-  let buttonClick = useCallback((exercise) => {
-    setCurrentExercise(exercise)
-    setCurrentScreen(EXERCISE_SCREEN)
-  })
-
-  if (currentScreen === MENU_SCREEN) {
-    screenComponent = (
-      <div>
-        <p>Exercise Menu</p>
-        <ul>
-          {exerciseList.map(({type, name}) => {
-            return <li key={name}>
-            <button style={{fontSize:"1em", margin:"10px", padding:"5px"}} onClick={() => buttonClick({ type, name })}>{name}</button>
-          </li>
-          })}
-        </ul>
-      </div>
-    );
-  } else if (currentScreen === EXERCISE_SCREEN) {
-    switch(currentExercise.type){
-      case DURATION_EXERCISE:
-        screenComponent = <DurationExercise 
-        exercise={currentExercise}  
-        setMenuScreen={() => setCurrentScreen(MENU_SCREEN)}
-        />
-      break;
-      case REPETITION_EXERCISE:
-        screenComponent = <RepetitionExercise 
-        exercise={currentExercise}  
-        setMenuScreen={() => setCurrentScreen(MENU_SCREEN)}
-        />
-      break;
-      case LAPS_EXERCISE:
-        screenComponent = <RunningExercise 
-        exercise={currentExercise}  
-        setMenuScreen={() => setCurrentScreen(MENU_SCREEN)}
-        />
-      break;
-      default:
-        screenComponent = undefined
-    }
-
-  }
+  const renderItem = ({ item }) => (
+    <Button
+      title={item.name}
+      onPress={() => navigation.navigate(item.type, { name: item.name })}
+    />
+  );
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {screenComponent} {/* Render screenComponent here */}
-      </header>
-    </div>
+    <View style={styles.container}>
+      <Text style={styles.header}>Choose an Exercise</Text>
+      <FlatList
+        data={exercises}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+      />
+    </View>
   );
-}
+};
 
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Repetition" component={RepetitionExercise} />
+        <Stack.Screen name="Duration" component={DurationExercise} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  header: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#ccc',
+    marginVertical: 5,
+  },
+});
+
+export default App;
