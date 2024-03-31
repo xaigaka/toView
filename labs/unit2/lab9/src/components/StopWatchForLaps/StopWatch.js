@@ -48,7 +48,7 @@ export default function StopWatch({ recordLap }) {
                 Reset
             </button>
             <button style={{ fontSize: "3em"}} onClick={recordLapHandler}>
-                Record Lap
+                Record Time
             </button>
         </div>
     );

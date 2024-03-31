@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header: {
+    marginTop: 30,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '500',
     marginBottom: 10,
   },
   separator: {
