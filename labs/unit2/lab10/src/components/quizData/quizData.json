@@ -1,0 +1,42 @@
+[
+    {
+      "prompt": "This is the first question...",
+      "type": "multiple-choice",
+      "choices": [
+        "choice 1",
+        "choice 2",
+        "choice 3",
+        "choice 4"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "This is the second question...",
+      "type": "multiple-answer",
+      "choices": [
+        "choice 1",
+        "choice 2",
+        "choice 3",
+        "choice 4"
+      ],
+      "correct": [0, 2]
+    },
+    {
+      "prompt": "This is the third question...",
+      "type": "true-false",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "This is the fourth question...",
+      "type": "true-false",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correct": 0
+    }
+  ]
