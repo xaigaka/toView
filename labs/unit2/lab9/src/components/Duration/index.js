@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import StopWatch from "../StopWatchForLaps/StopWatch";
-
 
 const exercises = [
   { type: 'Repetition', name: 'Push Ups' },
@@ -11,21 +10,23 @@ const exercises = [
   { type: 'Duration', name: 'Swimming' },
 ];
 
-let randomIndex = Math.floor(Math.random() * exercises.length);
-let randomExercise = exercises[randomIndex];
-let suggestedExercise = `Suggested Exercise: ${randomExercise.name}`;
-
-export default function DurationExercise({ route }) {
-  const theName = route.params.name;
-  while(theName == randomExercise.name){
-    randomIndex = Math.floor(Math.random() * exercises.length);
-    randomExercise = exercises[randomIndex];
-    suggestedExercise = `Suggested Exercise: ${randomExercise.name}`;
-  }
-  
-  const [laps, setLaps] = useState([]);
-  const stopWatchRef = useRef(null);
+export default function DurationExercise() {
+  const route = useRoute();
+  const { name } = route.params || {};
   const navigation = useNavigation();
+
+  const [laps, setLaps] = useState([]);
+  const [suggestedExercise, setSuggestedExercise] = useState("");
+
+  useEffect(() => {
+    let randomIndex;
+    let randomExercise;
+    do {
+      randomIndex = Math.floor(Math.random() * exercises.length);
+      randomExercise = exercises[randomIndex];
+    } while (randomExercise.name === name);
+    setSuggestedExercise(randomExercise.name);
+  }, [name]);
 
   const recordLap = (lapTime) => {
     setLaps([...laps, lapTime]);
@@ -33,17 +34,7 @@ export default function DurationExercise({ route }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header} >{theName}</Text>
-      <StopWatch recordLap={recordLap} ref={stopWatchRef} />
-      <View style={styles.lapContainer}>
-        {laps.map((lapTime, index) => (
-          <Text key={index}>Time {index + 1}: {formatTime(lapTime)}</Text>
-        ))}
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button title="Back to Menu" onPress={() => navigation.navigate('Home')} />
-        <Button title={suggestedExercise} onPress={() => navigation.navigate(randomExercise.type, { name: randomExercise.name })} />
-      </View>
+      <StopWatch recordLap={recordLap} />
     </View>
   );
 }

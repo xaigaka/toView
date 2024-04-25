@@ -16,19 +16,25 @@ const HomeScreen = ({ navigation }) => {
     { type: 'Duration', name: 'Swimming' },
   ];
 
-  const renderItem = ({ item }) => (
-    <Button
-      title={item.name}
-      onPress={() => navigation.navigate(item.type, { name: item.name })}
-    />
-  );
+  const handleExercisePress = (exercise) => {
+    if (exercise.type === 'Repetition') {
+      navigation.navigate('Repetition', { name: exercise.name });
+    } else if (exercise.type === 'Duration') {
+      navigation.navigate('Duration', { name: exercise.name });
+    }
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Choose an Exercise</Text>
       <FlatList
         data={exercises}
-        renderItem={renderItem}
+        renderItem={({ item }) => (
+          <Button
+            title={item.name}
+            onPress={() => handleExercisePress(item)}
+          />
+        )}
         keyExtractor={(item, index) => index.toString()}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />

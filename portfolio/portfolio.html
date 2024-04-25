@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Mai Portfolio</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/xxxxxxx.css">
+    <link rel="icon" href="gifs/furinasticker.png" type="image/x-icon">
+
+</head>
+<body class="bg">
+
+    <header>
+        <div class="navbar navbar-light bg-light box-shadow" style="margin-bottom: 20px;">
+            <div class="container"> <!-- Add container -->
+                <a href="#" class="navbar-brand d-flex align-items-center px-2 py-2 me-3">
+                    <h4>Thomas Mai</h4>
+                </a>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end"> <!-- Changed align-items-right to justify-content-end -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="index.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="portfolio.html"><span style="font-weight: bold;">Portfolio</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                      </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    
+    <main role="main" class="fade-in">
+            <!-- Contact Panel -->
+            <div id="contact-panel" style="display: none;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">
+                                    <h4>Contact Information</h4>
+                                    <div class="remove-bullets vertical-space"> <!-- Added class for removing bullets -->
+                                        <ul>
+                                            <li><i class="bi bi-rounded-right"></i> <strong>Email:</strong> thomasmai722@gmail.com</li>
+                                            <li><i class="bi bi-rounded-right"></i> <strong>Phone Number:</strong> +7066319839</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">
+                                    <h4>Follow My Socials</h4>
+                                    <div class="remove-bullets vertical-space"> <!-- Added class for removing bullets -->
+                                        <div class="row">
+                                            <div class="col-md-4 d-flex justify-content-center"> <!-- Center the button -->
+                                                <a href="https://github.com/xaigaka" target="_blank" class="btn btn-primary"><i class="bi bi-instagram"></i> Github</a>
+                                            </div>
+                                            <div class="col-md-4 d-flex justify-content-center"> <!-- Center the button -->
+                                                <a href="https://www.linkedin.com/in/thomas-mai-0a20912a5/" target="_blank" class="btn btn-primary"><i class="bi bi-instagram"></i> LinkedIn</a>
+                                            </div>
+                                            <div class="col-md-4 d-flex justify-content-center"> <!-- Center the button -->
+                                                <a href="https://www.instagram.com/xaigaka" target="_blank" class="btn btn-primary"><i class="bi bi-instagram"></i> Instagram</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        <section class="jumbotron">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <div>
+                            <h1 class="jumbotron-heading"><i>My Portfolio</i></h1>
+                            <h4>This is a collection of my works related to mobile development. I built these projects to operate dynamically in real-world scenarios while remaining sleek and usable.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="album py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h4>Flashcard App Design</h4>
+                                <p class="card-text">This project was built in Figma. The titular design, having all the necessary components, serves as a prototype which could be built into a functioning app. Thinking up a unique design was challenging, but I crafted rounded and wave-esque assets for a calming atmosphere given its intended usage to study.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary margin-below">View on Github</button>
+                                    </div>
+                                    <small class="text-muted"></small>
+                                </div>
+                                <div class="card-img-container">
+                                    <img src="gifs/figma.gif" alt="video of vocab app">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h4>Task Tracking App</h4>
+                                <p class="card-text">This project designed with React Native in Javascript allows users to keep track of tasks by adding them to a list and visually striking through them to indicate if it is done. The hardest part in this process was figuring out how to save users' registration data. I ended up using an array of objects which could be iterated through to find a particular user when they log in.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary margin-below">View on Github</button>
+                                    </div>
+                                    <small class="text-muted"></small>
+                                </div>
+                                <div class="card-img-container">
+                                    <img src="gifs/todo.gif" alt="video of todo app">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h4>Exercising App</h4>
+                                <p class="card-text">This project designed with React Native in Javascript serves as an exercise companion that counts the number of repetitions or the length of time an exercise is done. I had trouble integrating the stopwatch functionality but managed to debug it by error-checking the use-states.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary margin-below">View on Github</button>
+                                    </div>
+                                    <small class="text-muted"></small>
+                                </div>
+                                <div class="card-img-container">
+                                    <img src="gifs/exercise.gif" alt="video of exercise app">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h4>Multiple Choice Quiz App</h4>
+                                <p class="card-text">This application allows users to take a quiz and was design with React Native in Javascript. A quiz such as this one has a variety of practical uses such as in academia or data collection. Finding a way to save multiple answers for one question was difficult, but I got it running after adjusting how it was entered into the array.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary margin-below">View on Github</button>
+                                    </div>
+                                    <small class="text-muted"></small>
+                                </div>
+                                <div class="card-img-container">
+                                    <img class="card-img-top" src="gifs/mcquiz.gif" alt="multiple choice quiz">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h4>Dinner Menu</h4>
+                                <p class="card-text">This menu, designed using React and Javascript, exemplified a simple menu design as well as how to reduce code redundancy with the map method and dereferencing. This was one of the first times I encountered the method, so figuring out its syntax was challenging at the time.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary margin-below">View on Github</button>
+                                    </div>
+                                    <small class="text-muted"></small>
+                                </div>
+                                <div class="card-img-container">
+                                    <img src="gifs/menu.gif" alt="scrolling through menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>2023 &copy; Thomas Mai. All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".nav-link[href='#contact']").click(function(){
+                $("#contact-panel").slideToggle();
+            });
+        });
+    </script>
+    
+</body>
+</html>
